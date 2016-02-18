@@ -1,0 +1,9 @@
+C:\Users\gquittet\Documents\Visual Studio 2015\Projects\HEH\LDB2\TP2\Ex1\bin\Debug\Ex1.exe.config
+C:\Users\gquittet\Documents\Visual Studio 2015\Projects\HEH\LDB2\TP2\Ex1\bin\Debug\Ex1.exe
+C:\Users\gquittet\Documents\Visual Studio 2015\Projects\HEH\LDB2\TP2\Ex1\bin\Debug\Ex1.pdb
+C:\Users\gquittet\Documents\Visual Studio 2015\Projects\HEH\LDB2\TP2\Ex1\obj\Debug\Ex1.TP2.resources
+C:\Users\gquittet\Documents\Visual Studio 2015\Projects\HEH\LDB2\TP2\Ex1\obj\Debug\Ex1.Properties.Resources.resources
+C:\Users\gquittet\Documents\Visual Studio 2015\Projects\HEH\LDB2\TP2\Ex1\obj\Debug\Ex1.csproj.GenerateResource.Cache
+C:\Users\gquittet\Documents\Visual Studio 2015\Projects\HEH\LDB2\TP2\Ex1\obj\Debug\Ex1.exe
+C:\Users\gquittet\Documents\Visual Studio 2015\Projects\HEH\LDB2\TP2\Ex1\obj\Debug\Ex1.pdb
+C:\Users\gquittet\Documents\Visual Studio 2015\Projects\HEH\LDB2\TP2\Ex1\obj\Debug\Ex1.csprojResolveAssemblyReference.cache
