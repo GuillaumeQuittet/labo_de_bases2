@@ -15,11 +15,40 @@ namespace Projet
         public AddMovie()
         {
             InitializeComponent();
+            InitializeCombobox();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void InitializeCombobox()
         {
-
+            // Add days and months to combobox
+            for (int i = 1; i < 32; ++i)
+            {
+                if(i < 13)
+                {
+                    comboBox1.Items.Add(i);
+                    comboBox2.Items.Add(i);
+                }
+                else
+                {
+                    comboBox1.Items.Add(i);
+                }
+            }
+            // Add the years to combobox
+            int filmInvention = 1895;
+            int computerCurrentYear = DateTime.Now.Year;
+            for(int i = filmInvention; i <= computerCurrentYear; ++i)
+            {
+                comboBox3.Items.Add(i);
+            }
+            // Limit the visible items to 7 items
+            int visibleItems = 7;
+            comboBox1.DropDownHeight = comboBox1.ItemHeight * visibleItems;
+            comboBox2.DropDownHeight = comboBox1.ItemHeight * visibleItems;
+            comboBox3.DropDownHeight = comboBox1.ItemHeight * visibleItems;
+            // Set the default selected value
+            comboBox1.SelectedItem = 1;
+            comboBox2.SelectedItem = 1;
+            comboBox3.SelectedItem = 2000;
         }
 
         private void loadImageButton_Click(object sender, EventArgs e)

@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.loadImageButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -121,8 +121,8 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.Controls.Add(this.comboBox1, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.comboBox2, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.comboBox3, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.comboBox3, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.comboBox2, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(366, 37);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
@@ -142,15 +142,25 @@
             this.comboBox1.Size = new System.Drawing.Size(116, 28);
             this.comboBox1.TabIndex = 0;
             // 
+            // comboBox3
+            // 
+            this.comboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(247, 3);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(117, 28);
+            this.comboBox3.TabIndex = 1;
+            // 
             // comboBox2
             // 
             this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(247, 3);
+            this.comboBox2.Location = new System.Drawing.Point(125, 3);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(117, 28);
-            this.comboBox2.TabIndex = 1;
+            this.comboBox2.Size = new System.Drawing.Size(116, 28);
+            this.comboBox2.TabIndex = 2;
             // 
             // tableLayoutPanel2
             // 
@@ -177,7 +187,6 @@
             this.cancelButton.TabIndex = 0;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // saveButton
             // 
@@ -248,16 +257,6 @@
             this.textBox2.Size = new System.Drawing.Size(508, 281);
             this.textBox2.TabIndex = 1;
             // 
-            // comboBox3
-            // 
-            this.comboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(125, 3);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(116, 28);
-            this.comboBox3.TabIndex = 2;
-            // 
             // AddMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -297,8 +296,8 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
