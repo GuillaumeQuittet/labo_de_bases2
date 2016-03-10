@@ -25,12 +25,12 @@ namespace Projet
             {
                 if(i < 13)
                 {
-                    comboBox1.Items.Add(i);
-                    comboBox2.Items.Add(i);
+                    comboBoxDays.Items.Add(i);
+                    comboBoxMonths.Items.Add(i);
                 }
                 else
                 {
-                    comboBox1.Items.Add(i);
+                    comboBoxDays.Items.Add(i);
                 }
             }
             // Add the years to combobox
@@ -38,17 +38,17 @@ namespace Projet
             int computerCurrentYear = DateTime.Now.Year;
             for(int i = filmInvention; i <= computerCurrentYear; ++i)
             {
-                comboBox3.Items.Add(i);
+                comboBoxYears.Items.Add(i);
             }
             // Limit the visible items to 7 items
             int visibleItems = 7;
-            comboBox1.DropDownHeight = comboBox1.ItemHeight * visibleItems;
-            comboBox2.DropDownHeight = comboBox1.ItemHeight * visibleItems;
-            comboBox3.DropDownHeight = comboBox1.ItemHeight * visibleItems;
+            comboBoxDays.DropDownHeight = comboBoxDays.ItemHeight * visibleItems;
+            comboBoxMonths.DropDownHeight = comboBoxDays.ItemHeight * visibleItems;
+            comboBoxYears.DropDownHeight = comboBoxDays.ItemHeight * visibleItems;
             // Set the default selected value
-            comboBox1.SelectedItem = 1;
-            comboBox2.SelectedItem = 1;
-            comboBox3.SelectedItem = 2000;
+            comboBoxDays.SelectedItem = 1;
+            comboBoxMonths.SelectedItem = 1;
+            comboBoxYears.SelectedItem = 2000;
         }
 
         private void loadImageButton_Click(object sender, EventArgs e)

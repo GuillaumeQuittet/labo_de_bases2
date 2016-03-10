@@ -34,9 +34,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxDays = new System.Windows.Forms.ComboBox();
+            this.comboBoxYears = new System.Windows.Forms.ComboBox();
+            this.comboBoxMonths = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.cancelButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
@@ -120,9 +120,9 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel5.Controls.Add(this.comboBox1, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.comboBox3, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.comboBox2, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.comboBoxDays, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.comboBoxYears, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.comboBoxMonths, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(366, 37);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
@@ -132,35 +132,35 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(367, 37);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
-            // comboBox1
+            // comboBoxDays
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(116, 28);
-            this.comboBox1.TabIndex = 0;
+            this.comboBoxDays.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxDays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDays.FormattingEnabled = true;
+            this.comboBoxDays.Location = new System.Drawing.Point(3, 3);
+            this.comboBoxDays.Name = "comboBoxDays";
+            this.comboBoxDays.Size = new System.Drawing.Size(116, 28);
+            this.comboBoxDays.TabIndex = 0;
             // 
-            // comboBox3
+            // comboBoxYears
             // 
-            this.comboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(247, 3);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(117, 28);
-            this.comboBox3.TabIndex = 1;
+            this.comboBoxYears.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxYears.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxYears.FormattingEnabled = true;
+            this.comboBoxYears.Location = new System.Drawing.Point(247, 3);
+            this.comboBoxYears.Name = "comboBoxYears";
+            this.comboBoxYears.Size = new System.Drawing.Size(117, 28);
+            this.comboBoxYears.TabIndex = 1;
             // 
-            // comboBox2
+            // comboBoxMonths
             // 
-            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(125, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(116, 28);
-            this.comboBox2.TabIndex = 2;
+            this.comboBoxMonths.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxMonths.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMonths.FormattingEnabled = true;
+            this.comboBoxMonths.Location = new System.Drawing.Point(125, 3);
+            this.comboBoxMonths.Name = "comboBoxMonths";
+            this.comboBoxMonths.Size = new System.Drawing.Size(116, 28);
+            this.comboBoxMonths.TabIndex = 2;
             // 
             // tableLayoutPanel2
             // 
@@ -296,8 +296,8 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxYears;
+        private System.Windows.Forms.ComboBox comboBoxDays;
+        private System.Windows.Forms.ComboBox comboBoxMonths;
     }
 }
