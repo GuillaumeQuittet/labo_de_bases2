@@ -62,5 +62,33 @@ namespace Projet
                 pictureBox1.Image = new Bitmap(fileDialog.FileName);
             }
         }
+
+        private int nbreDays(int i)
+        {
+            if (i == 0 || i == 2 || i == 4 || i == 6 || i == 7 || i == 9 || i == 11)
+                return 31;
+            else if (i == 3 || i == 5 || i == 8 || i == 10)
+                return 30;
+            else if (i == 1)
+            {
+                int year = (int) comboBoxYears.SelectedItem;
+                if ((year%4 == 0 && year%100!=0) || (year%400==0))
+                    return 29;
+                else
+                    return 28;
+            }
+            else
+                return -1;
+        }
+
+        private void comboBoxMonths_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxDays.Items.Clear();
+            int nbreDeJour = nbreDays((int) comboBoxMonths.SelectedIndex);
+            for (int i = 1; i <= nbreDeJour; ++i)
+            {
+                comboBoxDays.Items.Add(i);
+            }
+        }
     }
 }

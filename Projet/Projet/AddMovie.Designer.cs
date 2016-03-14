@@ -40,11 +40,13 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.cancelButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.loadImageButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -120,8 +122,8 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel5.Controls.Add(this.comboBoxDays, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.comboBoxYears, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.comboBoxDays, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.comboBoxYears, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.comboBoxMonths, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(366, 37);
@@ -137,20 +139,22 @@
             this.comboBoxDays.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxDays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDays.FormattingEnabled = true;
-            this.comboBoxDays.Location = new System.Drawing.Point(3, 3);
+            this.comboBoxDays.Location = new System.Drawing.Point(247, 3);
             this.comboBoxDays.Name = "comboBoxDays";
-            this.comboBoxDays.Size = new System.Drawing.Size(116, 28);
+            this.comboBoxDays.Size = new System.Drawing.Size(117, 28);
             this.comboBoxDays.TabIndex = 0;
+            this.comboBoxDays.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonths_SelectedIndexChanged);
             // 
             // comboBoxYears
             // 
             this.comboBoxYears.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxYears.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxYears.FormattingEnabled = true;
-            this.comboBoxYears.Location = new System.Drawing.Point(247, 3);
+            this.comboBoxYears.Location = new System.Drawing.Point(3, 3);
             this.comboBoxYears.Name = "comboBoxYears";
-            this.comboBoxYears.Size = new System.Drawing.Size(117, 28);
+            this.comboBoxYears.Size = new System.Drawing.Size(116, 28);
             this.comboBoxYears.TabIndex = 1;
+            this.comboBoxYears.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonths_SelectedIndexChanged);
             // 
             // comboBoxMonths
             // 
@@ -161,15 +165,19 @@
             this.comboBoxMonths.Name = "comboBoxMonths";
             this.comboBoxMonths.Size = new System.Drawing.Size(116, 28);
             this.comboBoxMonths.TabIndex = 2;
+            this.comboBoxMonths.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonths_SelectedIndexChanged);
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Controls.Add(this.cancelButton, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.saveButton, 1, 0);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.cancelButton, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.saveButton, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.editButton, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 399);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -197,6 +205,16 @@
             this.saveButton.TabIndex = 1;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            // 
+            // editButton
+            // 
+            this.editButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editButton.Location = new System.Drawing.Point(3, 3);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(177, 54);
+            this.editButton.TabIndex = 2;
+            this.editButton.Text = "Edit button";
+            this.editButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
             // 
@@ -257,6 +275,16 @@
             this.textBox2.Size = new System.Drawing.Size(508, 281);
             this.textBox2.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(186, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(177, 54);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Delete ...";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // AddMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -296,8 +324,10 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.ComboBox comboBoxYears;
         private System.Windows.Forms.ComboBox comboBoxDays;
         private System.Windows.Forms.ComboBox comboBoxMonths;
+        private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.ComboBox comboBoxYears;
+        private System.Windows.Forms.Button button1;
     }
 }
