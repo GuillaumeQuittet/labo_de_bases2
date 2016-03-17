@@ -41,12 +41,12 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.loadImageButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -154,7 +154,7 @@
             this.comboBoxYears.Name = "comboBoxYears";
             this.comboBoxYears.Size = new System.Drawing.Size(116, 28);
             this.comboBoxYears.TabIndex = 1;
-            this.comboBoxYears.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonths_SelectedIndexChanged);
+            this.comboBoxYears.SelectedIndexChanged += new System.EventHandler(this.comboBoxClear);
             // 
             // comboBoxMonths
             // 
@@ -165,7 +165,7 @@
             this.comboBoxMonths.Name = "comboBoxMonths";
             this.comboBoxMonths.Size = new System.Drawing.Size(116, 28);
             this.comboBoxMonths.TabIndex = 2;
-            this.comboBoxMonths.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonths_SelectedIndexChanged);
+            this.comboBoxMonths.SelectedIndexChanged += new System.EventHandler(this.comboBoxClear);
             // 
             // tableLayoutPanel2
             // 
@@ -195,6 +195,7 @@
             this.cancelButton.TabIndex = 0;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // saveButton
             // 
@@ -205,6 +206,7 @@
             this.saveButton.TabIndex = 1;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // editButton
             // 
@@ -215,6 +217,16 @@
             this.editButton.TabIndex = 2;
             this.editButton.Text = "Edit button";
             this.editButton.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(186, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(177, 54);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Delete ...";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
             // 
@@ -274,16 +286,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(508, 281);
             this.textBox2.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(186, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(177, 54);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Delete ...";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // AddMovie
             // 

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -81,14 +83,33 @@ namespace Projet
                 return -1;
         }
 
-        private void comboBoxMonths_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxClear(object sender, EventArgs e)
         {
             comboBoxDays.Items.Clear();
+            comboBoxMonths_SelectedIndexChanged(sender, e);
+        }
+
+        private void comboBoxMonths_SelectedIndexChanged(object sender, EventArgs e)
+        {
             int nbreDeJour = nbreDays((int) comboBoxMonths.SelectedIndex);
             for (int i = 1; i <= nbreDeJour; ++i)
             {
                 comboBoxDays.Items.Add(i);
             }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            FileStream fileStream = new FileStream("movie.mvl", FileMode.Create);
+            Movie movie = new Movie(textBox1.Text, (int)comboBoxDays.SelectedItem, (int)comboBoxMonths.SelectedItem, (int)comboBoxYears.SelectedItem, pictureBox1.ImageLocation, textBox2.Text);
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            binaryFormatter.Serialize(fileStream, movie);
+            fileStream.Close();
         }
     }
 }

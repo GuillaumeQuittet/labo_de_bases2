@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projet
 {
+    [Serializable]
     class Movie
     {
         private String title;
@@ -15,9 +16,11 @@ namespace Projet
         private String image;
         private String description;
 
-        public Movie(String title, int year, String image, String description)
+        public Movie(String title, int day, int month, int year, String image, String description)
         {
             this.title = title;
+            this.day = day;
+            this.month = month;
             this.year = year;
             this.image = image;
             this.description = description;
