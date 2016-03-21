@@ -143,7 +143,6 @@
             this.comboBoxDays.Name = "comboBoxDays";
             this.comboBoxDays.Size = new System.Drawing.Size(117, 28);
             this.comboBoxDays.TabIndex = 0;
-            this.comboBoxDays.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonths_SelectedIndexChanged);
             // 
             // comboBoxYears
             // 

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -86,16 +87,17 @@ namespace Projet
         private void comboBoxClear(object sender, EventArgs e)
         {
             comboBoxDays.Items.Clear();
-            comboBoxMonths_SelectedIndexChanged(sender, e);
+            resetComboboxDays();
         }
 
-        private void comboBoxMonths_SelectedIndexChanged(object sender, EventArgs e)
+        private void resetComboboxDays()
         {
-            int nbreDeJour = nbreDays((int) comboBoxMonths.SelectedIndex);
+            int nbreDeJour = nbreDays((int)comboBoxMonths.SelectedIndex);
             for (int i = 1; i <= nbreDeJour; ++i)
             {
                 comboBoxDays.Items.Add(i);
             }
+            comboBoxDays.SelectedIndex = 0;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -105,10 +107,37 @@ namespace Projet
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            FileStream fileStream = new FileStream("movie.mvl", FileMode.Create);
-            Movie movie = new Movie(textBox1.Text, (int)comboBoxDays.SelectedItem, (int)comboBoxMonths.SelectedItem, (int)comboBoxYears.SelectedItem, pictureBox1.ImageLocation, textBox2.Text);
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            binaryFormatter.Serialize(fileStream, movie);
+            FileStream fileStream = null;
+            try
+            {
+                fileStream = new FileStream(textBox1.Text+".mvl", FileMode.OpenOrCreate);
+            }
+            catch(IOException io)
+            {
+                MessageBox.Show(io.Message, "Error : NullReferenceException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            Movie movie = null;
+            try
+            {
+               movie = new Movie(textBox1.Text, (int)comboBoxDays.SelectedItem, (int)comboBoxMonths.SelectedItem, (int)comboBoxYears.SelectedItem, pictureBox1.ImageLocation, textBox2.Text);
+            }
+            catch(NullReferenceException nre)
+            {
+                MessageBox.Show(nre.Message, "Error : NullReferenceException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (fileStream != null && movie != null)
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                try
+                {
+                    binaryFormatter.Serialize(fileStream, movie);
+                }
+                catch(SerializationException se)
+                {
+                    MessageBox.Show(se.Message, "Error : SerializationException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                Dispose();
+            }
             fileStream.Close();
         }
     }
