@@ -15,10 +15,45 @@ namespace Projet
 {
     public partial class AddMovie : Form
     {
-        public AddMovie()
+        private Main main;
+        private Image imageMovie;
+        private Movie movie;
+        private int saveMethod = 0;
+
+        public AddMovie(Main main)
         {
             InitializeComponent();
             InitializeCombobox();
+            this.main = main;
+            deleteButton.Enabled = false;
+            editButton.Enabled = false;
+        }
+
+        public AddMovie(Main main, Movie movie)
+        {
+            InitializeComponent();
+            InitializeCombobox();
+            comboBoxDays.SelectedItem = movie.getDay();
+            comboBoxMonths.SelectedItem = movie.getMonth();
+            comboBoxYears.SelectedItem = movie.getYear();
+            comboBoxDays.Enabled = false;
+            comboBoxMonths.Enabled = false;
+            comboBoxYears.Enabled = false;
+            textBox1.Text = movie.getTitle();
+            textBox2.Text = movie.getDescription();
+            textBox3.Text = movie.getAuthor();
+            textBox4.Text = movie.getCategory();
+            pictureBox1.Image = movie.getImage();
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            textBox1.ReadOnly = true;
+            textBox2.ReadOnly = true;
+            textBox3.ReadOnly = true;
+            textBox4.ReadOnly = true;
+            loadImageButton.Enabled = false;
+            saveButton.Enabled = false;
+            this.main = main;
+            this.movie = movie;
+            saveMethod = 1;
         }
 
         private void InitializeCombobox()
@@ -26,7 +61,7 @@ namespace Projet
             // Add days and months to combobox
             for (int i = 1; i < 32; ++i)
             {
-                if(i < 13)
+                if (i < 13)
                 {
                     comboBoxDays.Items.Add(i);
                     comboBoxMonths.Items.Add(i);
@@ -39,7 +74,7 @@ namespace Projet
             // Add the years to combobox
             int filmInvention = 1895;
             int computerCurrentYear = DateTime.Now.Year;
-            for(int i = filmInvention; i <= computerCurrentYear; ++i)
+            for (int i = filmInvention; i <= computerCurrentYear; ++i)
             {
                 comboBoxYears.Items.Add(i);
             }
@@ -58,11 +93,13 @@ namespace Projet
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Multiselect = false;
-            fileDialog.Filter = "JPEG Image|*.jpg|PNG Image|*.png|Bitmap|*.bmp|Other image format|*.*";
-            if(fileDialog.ShowDialog() == DialogResult.OK)
+            fileDialog.Filter = "JPEG Image|*.jpg|PNG Image|*.png|All files|*.*";
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
                 pictureBox1.Image = new Bitmap(fileDialog.FileName);
+                string fileExtension = Path.GetExtension(fileDialog.FileName);
+                imageMovie = Image.FromFile(fileDialog.FileName);
             }
         }
 
@@ -74,8 +111,8 @@ namespace Projet
                 return 30;
             else if (i == 1)
             {
-                int year = (int) comboBoxYears.SelectedItem;
-                if ((year%4 == 0 && year%100!=0) || (year%400==0))
+                int year = (int)comboBoxYears.SelectedItem;
+                if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
                     return 29;
                 else
                     return 28;
@@ -107,38 +144,113 @@ namespace Projet
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            FileStream fileStream = null;
-            try
+            if (canSave())
             {
-                fileStream = new FileStream(textBox1.Text+".mvl", FileMode.OpenOrCreate);
-            }
-            catch(IOException io)
-            {
-                MessageBox.Show(io.Message, "Error : NullReferenceException", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            Movie movie = null;
-            try
-            {
-               movie = new Movie(textBox1.Text, (int)comboBoxDays.SelectedItem, (int)comboBoxMonths.SelectedItem, (int)comboBoxYears.SelectedItem, pictureBox1.ImageLocation, textBox2.Text);
-            }
-            catch(NullReferenceException nre)
-            {
-                MessageBox.Show(nre.Message, "Error : NullReferenceException", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            if (fileStream != null && movie != null)
-            {
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                if(saveMethod == 1)
+                {
+                    File.Delete(@"Ressources/Movies/" + this.movie.getTitle() + this.movie.getDay() + this.movie.getMonth() + this.movie.getYear() + this.movie.getAuthor() + this.movie.getCategory() + ".mvl");
+                }
+                Directory.CreateDirectory(@"Ressources/Movies");
+                FileStream fileStream = null;
                 try
                 {
-                    binaryFormatter.Serialize(fileStream, movie);
+                    fileStream = new FileStream(@"Ressources/Movies/" + textBox1.Text + comboBoxDays.Text + comboBoxMonths.Text + comboBoxYears.Text + textBox3.Text + textBox4.Text + ".mvl", FileMode.OpenOrCreate);
                 }
-                catch(SerializationException se)
+                catch (IOException io)
                 {
-                    MessageBox.Show(se.Message, "Error : SerializationException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(io.Message, "Error : NullReferenceException", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                Movie movie = null;
+                try
+                {
+                    movie = new Movie(textBox1.Text, (int)comboBoxDays.SelectedItem, (int)comboBoxMonths.SelectedItem, (int)comboBoxYears.SelectedItem, textBox3.Text, textBox4.Text, pictureBox1.Image, textBox2.Text);
+                }
+                catch (NullReferenceException nre)
+                {
+                    MessageBox.Show(nre.Message, "Error : NullReferenceException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (fileStream != null && movie != null)
+                {
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                    try
+                    {
+                        binaryFormatter.Serialize(fileStream, movie);
+                        fileStream.Close();
+                    }
+                    catch (SerializationException se)
+                    {
+                        MessageBox.Show(se.Message, "Error : SerializationException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                main.initLibrary();
                 Dispose();
             }
-            fileStream.Close();
+            else
+            {
+                MessageBox.Show("Please complete all the textbox and add an image.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool canSave()
+        {
+            if (!String.IsNullOrEmpty(textBox1.Text))
+            {
+                if (!String.IsNullOrEmpty(textBox2.Text))
+                {
+                    if (!String.IsNullOrEmpty(textBox3.Text))
+                    {
+                        if (!String.IsNullOrEmpty(textBox4.Text))
+                        {
+                            if (pictureBox1.Image != null)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            File.Delete(@"Ressources/Movies/" + textBox1.Text + comboBoxDays.Text + comboBoxMonths.Text + comboBoxYears.Text + textBox3.Text + textBox4.Text + ".mvl");
+            main.initLibrary();
+            Dispose();
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            saveButton.Enabled = true;
+            textBox1.ReadOnly = false;
+            textBox2.ReadOnly = false;
+            textBox3.ReadOnly = false;
+            textBox4.ReadOnly = false;
+            comboBoxDays.Enabled = true;
+            comboBoxMonths.Enabled = true;
+            comboBoxYears.Enabled = true;
+            loadImageButton.Enabled = true;
+            deleteButton.Enabled = false;
+            editButton.Enabled = false;
         }
     }
 }

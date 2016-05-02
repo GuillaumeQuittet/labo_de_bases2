@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,21 +8,25 @@ using System.Threading.Tasks;
 namespace Projet
 {
     [Serializable]
-    class Movie
+    public class Movie
     {
         private String title;
         private int day;
         private int month;
         private int year;
-        private String image;
+        private String author;
+        private String category;
+        private Image image;
         private String description;
 
-        public Movie(String title, int day, int month, int year, String image, String description)
+        public Movie(String title, int day, int month, int year, String author, String category, Image image, String description)
         {
             this.title = title;
             this.day = day;
             this.month = month;
             this.year = year;
+            this.category = category;
+            this.author = author;
             this.image = image;
             this.description = description;
         }
@@ -46,7 +51,17 @@ namespace Projet
             this.year = year;
         }
 
-        public void setImage(String image)
+        public void setAuthor(String author)
+        {
+            this.author = author;
+        }
+
+        public void setCategory(String category)
+        {
+            this.category = category;
+        }
+
+        public void setImage(Image image)
         {
             this.image = image;
         }
@@ -71,7 +86,22 @@ namespace Projet
             return year;
         }
 
-        public string getImage()
+        public String getAuthor()
+        {
+            return author;
+        }
+
+        public String getCategory()
+        {
+            return category;
+        }
+
+        public String getDescription()
+        {
+            return description;
+        }
+
+        public Image getImage()
         {
             return image;
         }
