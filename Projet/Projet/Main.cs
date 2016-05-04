@@ -71,6 +71,7 @@ namespace Projet
             }
         }
 
+        // La partie thèmes.
         private void listView1_ItemActivate(object sender, EventArgs e)
         {
             ListView list = (ListView)sender;
@@ -146,15 +147,23 @@ namespace Projet
             tableLayoutPanel1.BackColor = Color.Red;
             listView1.ForeColor = SystemColors.WindowText;
         }
+        // Fin de la partie thèmes.
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure to delete these movies ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(dr.Equals(DialogResult.Yes))
             {
-                // Movie movie = movieList[listView1.Items.IndexOf(listView1.SelectedItems)];
-                listView1.SelectedItems.Clear();
-                Console.WriteLine(listView1.SelectedItems);
+                // Je parcoure les éléments sélectionnés et les supprime.
+                for(int i = 0; i < listView1.SelectedItems.Count; ++i)
+                {
+                    // Je fais correspondre un objet ListItem avec un Movie grâce à la List<Movie>.
+                    Movie movie = movieList[listView1.Items.IndexOf(listView1.SelectedItems[i])];
+                    // Je supprime le fichier correspondant au Movie sélectionné.
+                    File.Delete(@"Ressources/Movies/" + movie.getTitle() + movie.getDay() + movie.getMonth() + movie.getYear() + movie.getAuthor() + movie.getCategory() + ".mvl");
+                }
+                // Je mets à jour la liste de films.
+                initLibrary();
             }
         }
     }
