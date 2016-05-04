@@ -74,9 +74,88 @@ namespace Projet
         private void listView1_ItemActivate(object sender, EventArgs e)
         {
             ListView list = (ListView)sender;
-            Movie movie = movieList[list.Items.IndexOf(list.SelectedItems[0])];
-            AddMovie addMovie = new AddMovie(this, movie);
-            addMovie.Show();
+            Movie movie;
+            try
+            {
+                movie = movieList[list.Items.IndexOf(list.SelectedItems[0])];
+                AddMovie addMovie = new AddMovie(this, movie);
+                addMovie.Show();
+            }
+            catch(ArgumentOutOfRangeException iobe)
+            {
+                Console.WriteLine("Error: {0}", iobe.Message);
+            } 
+        }
+
+        private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listView1.BackColor = SystemColors.Window;
+            menuStrip1.BackColor = SystemColors.Control;
+            menuStrip1.ForeColor = SystemColors.ControlText;
+            statusStrip1.BackColor = SystemColors.Control;
+            tableLayoutPanel1.BackColor = SystemColors.Control;
+            listView1.ForeColor = SystemColors.WindowText;
+        }
+
+        private void lightBlueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listView1.BackColor = Color.LightBlue;
+            menuStrip1.BackColor = Color.Blue;
+            menuStrip1.ForeColor = Color.White;
+            statusStrip1.BackColor = Color.Blue;
+            tableLayoutPanel1.BackColor = Color.Blue;
+            listView1.ForeColor = SystemColors.WindowText;
+        }
+
+        private void yellowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listView1.BackColor = Color.LightGray;
+            menuStrip1.BackColor = Color.Gold;
+            menuStrip1.ForeColor = SystemColors.ControlText;
+            statusStrip1.BackColor = Color.Gold;
+            tableLayoutPanel1.BackColor = Color.Gold;
+            listView1.ForeColor = SystemColors.WindowText;
+        }
+
+        private void pornHubToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listView1.BackColor = Color.Black;
+            menuStrip1.BackColor = Color.Black;
+            menuStrip1.ForeColor = Color.White;
+            statusStrip1.BackColor = Color.Gold;
+            tableLayoutPanel1.BackColor = Color.Gold;
+            listView1.ForeColor = Color.White;
+        }
+
+        private void youPornToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listView1.BackColor = Color.HotPink;
+            menuStrip1.BackColor = Color.Black;
+            menuStrip1.ForeColor = Color.White;
+            statusStrip1.BackColor = Color.Black;
+            tableLayoutPanel1.BackColor = Color.MediumVioletRed;
+            listView1.ForeColor = SystemColors.WindowText;
+        }
+
+        private void redtubeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listView1.BackColor = Color.Red;
+            menuStrip1.BackColor = Color.Black;
+            menuStrip1.ForeColor = Color.White;
+            statusStrip1.BackColor = Color.Black;
+            tableLayoutPanel1.BackColor = Color.Red;
+            listView1.ForeColor = SystemColors.WindowText;
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to delete these movies ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(dr.Equals(DialogResult.Yes))
+            {
+                // Movie movie = movieList[listView1.Items.IndexOf(listView1.SelectedItems)];
+                listView1.SelectedItems.Clear();
+                Console.WriteLine(listView1.SelectedItems);
+            }
         }
     }
 }

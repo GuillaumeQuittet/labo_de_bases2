@@ -19,6 +19,7 @@ namespace Projet
         private Image imageMovie;
         private Movie movie;
         private int saveMethod = 0;
+        private int editMode = 0;
 
         public AddMovie(Main main)
         {
@@ -33,6 +34,14 @@ namespace Projet
         {
             InitializeComponent();
             InitializeCombobox();
+            setMovieInContent(movie);
+            this.main = main;
+            this.movie = movie;
+            saveMethod = 1;
+        }
+
+        private void setMovieInContent(Movie movie)
+        {
             comboBoxDays.SelectedItem = movie.getDay();
             comboBoxMonths.SelectedItem = movie.getMonth();
             comboBoxYears.SelectedItem = movie.getYear();
@@ -51,9 +60,6 @@ namespace Projet
             textBox4.ReadOnly = true;
             loadImageButton.Enabled = false;
             saveButton.Enabled = false;
-            this.main = main;
-            this.movie = movie;
-            saveMethod = 1;
         }
 
         private void InitializeCombobox()
@@ -93,7 +99,7 @@ namespace Projet
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Multiselect = false;
-            fileDialog.Filter = "JPEG Image|*.jpg|PNG Image|*.png|All files|*.*";
+            fileDialog.Filter = "JPEG Image|*.jpg|PNG Image|*.png|GIF Image|*.gif|BMP Image|*.bmp|All files|*.*";
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -139,7 +145,12 @@ namespace Projet
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            Dispose();
+            if(editMode == 0)
+                Dispose();
+            else
+            {
+                enableEditMode(0);
+            }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -240,17 +251,44 @@ namespace Projet
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            saveButton.Enabled = true;
-            textBox1.ReadOnly = false;
-            textBox2.ReadOnly = false;
-            textBox3.ReadOnly = false;
-            textBox4.ReadOnly = false;
-            comboBoxDays.Enabled = true;
-            comboBoxMonths.Enabled = true;
-            comboBoxYears.Enabled = true;
-            loadImageButton.Enabled = true;
-            deleteButton.Enabled = false;
-            editButton.Enabled = false;
+            enableEditMode(1);
+        }
+
+        private void enableEditMode(int x)
+        {
+            if(x == 1)
+            {
+                saveButton.Enabled = true;
+                textBox1.ReadOnly = false;
+                textBox2.ReadOnly = false;
+                textBox3.ReadOnly = false;
+                textBox4.ReadOnly = false;
+                comboBoxDays.Enabled = true;
+                comboBoxMonths.Enabled = true;
+                comboBoxYears.Enabled = true;
+                loadImageButton.Enabled = true;
+                deleteButton.Enabled = false;
+                editButton.Enabled = false;
+                editMode = 1;
+                cancelButton.Text = "Cancel modification(s)";
+            }
+            else
+            {
+                saveButton.Enabled = false;
+                textBox1.ReadOnly = true;
+                textBox2.ReadOnly = true;
+                textBox3.ReadOnly = true;
+                textBox4.ReadOnly = true;
+                comboBoxDays.Enabled = false;
+                comboBoxMonths.Enabled = false;
+                comboBoxYears.Enabled = false;
+                loadImageButton.Enabled = false;
+                deleteButton.Enabled = true;
+                editButton.Enabled = true;
+                editMode = 0;
+                setMovieInContent(movie);
+                cancelButton.Text = "Cancel";
+            }
         }
     }
 }

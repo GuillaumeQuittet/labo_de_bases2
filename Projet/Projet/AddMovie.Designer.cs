@@ -114,7 +114,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(241, 20);
-            this.textBox1.TabIndex = 2;
+            this.textBox1.TabIndex = 1;
             // 
             // label3
             // 
@@ -155,7 +155,7 @@
             this.comboBoxDays.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxDays.Name = "comboBoxDays";
             this.comboBoxDays.Size = new System.Drawing.Size(79, 21);
-            this.comboBoxDays.TabIndex = 0;
+            this.comboBoxDays.TabIndex = 4;
             // 
             // comboBoxYears
             // 
@@ -166,7 +166,7 @@
             this.comboBoxYears.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxYears.Name = "comboBoxYears";
             this.comboBoxYears.Size = new System.Drawing.Size(77, 21);
-            this.comboBoxYears.TabIndex = 1;
+            this.comboBoxYears.TabIndex = 2;
             this.comboBoxYears.SelectedIndexChanged += new System.EventHandler(this.comboBoxClear);
             // 
             // comboBoxMonths
@@ -178,7 +178,7 @@
             this.comboBoxMonths.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxMonths.Name = "comboBoxMonths";
             this.comboBoxMonths.Size = new System.Drawing.Size(77, 21);
-            this.comboBoxMonths.TabIndex = 2;
+            this.comboBoxMonths.TabIndex = 3;
             this.comboBoxMonths.SelectedIndexChanged += new System.EventHandler(this.comboBoxClear);
             // 
             // label4
@@ -198,7 +198,7 @@
             this.textBox3.Location = new System.Drawing.Point(247, 55);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(239, 20);
-            this.textBox3.TabIndex = 7;
+            this.textBox3.TabIndex = 5;
             // 
             // textBox4
             // 
@@ -206,7 +206,7 @@
             this.textBox4.Location = new System.Drawing.Point(247, 81);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(239, 20);
-            this.textBox4.TabIndex = 8;
+            this.textBox4.TabIndex = 6;
             // 
             // tableLayoutPanel2
             // 
@@ -235,7 +235,7 @@
             this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(119, 35);
-            this.cancelButton.TabIndex = 0;
+            this.cancelButton.TabIndex = 10;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -247,7 +247,7 @@
             this.saveButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(118, 35);
-            this.saveButton.TabIndex = 1;
+            this.saveButton.TabIndex = 9;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -259,7 +259,7 @@
             this.editButton.Margin = new System.Windows.Forms.Padding(2);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(118, 35);
-            this.editButton.TabIndex = 2;
+            this.editButton.TabIndex = 12;
             this.editButton.Text = "Edit button";
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
@@ -271,7 +271,7 @@
             this.deleteButton.Margin = new System.Windows.Forms.Padding(2);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(118, 35);
-            this.deleteButton.TabIndex = 3;
+            this.deleteButton.TabIndex = 11;
             this.deleteButton.Text = "Delete ...";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
@@ -315,7 +315,7 @@
             this.loadImageButton.Margin = new System.Windows.Forms.Padding(2);
             this.loadImageButton.Name = "loadImageButton";
             this.loadImageButton.Size = new System.Drawing.Size(138, 19);
-            this.loadImageButton.TabIndex = 0;
+            this.loadImageButton.TabIndex = 8;
             this.loadImageButton.Text = "Load image . . .";
             this.loadImageButton.UseVisualStyleBackColor = true;
             this.loadImageButton.Click += new System.EventHandler(this.loadImageButton_Click);
@@ -338,7 +338,7 @@
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(339, 148);
-            this.textBox2.TabIndex = 1;
+            this.textBox2.TabIndex = 7;
             // 
             // AddMovie
             // 
