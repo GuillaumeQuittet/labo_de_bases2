@@ -156,6 +156,8 @@ namespace Projet
                     // Je supprime le fichier correspondant au Movie sélectionné.
                     File.Delete(@"Ressources/Movies/" + movie.getTitle() + movie.getDay() + movie.getMonth() + movie.getYear() + movie.getAuthor() + movie.getCategory() + ".mvl");
                 }
+                // On remet à zéro le textBox1
+                textBox1.Text = "";
                 // Je mets à jour la liste de films.
                 initLibrary();
             }
