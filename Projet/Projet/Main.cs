@@ -180,21 +180,21 @@ namespace Projet
                 {
                     try
                     {
-                        // TODO Fixer le fait que pendant la recherche, le programme passe 2 fois dans la fonction
                         for (int j = 0; j <= movie.getTitle().Length - text.Length; ++j)
                         {
                             if (text.Equals(movie.getTitle().Substring(j, text.Length)))
                             {
                                 gridScan(movie, i);
                                 ++i;
+                                // Une fois le film trouvé, on quitte la boucle.
+                                break;
                             }
                         }
                     }
                     catch(ArgumentOutOfRangeException aoore)
                     {
-                        //pass
+                        Console.WriteLine("Error: {0}", aoore.Message);
                     }
-                    
                 }
             }
             else
