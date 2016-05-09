@@ -18,6 +18,7 @@ namespace Projet
     {
 
         List<Movie> movieList = new List<Movie>();
+        List<Movie> searchMovieList = new List<Movie>();
 
         public Main()
         {
@@ -38,9 +39,9 @@ namespace Projet
             listView1.Clear();
             movieList.Clear();
             BinaryFormatter binaryFormatter = new BinaryFormatter();
-            string[] filesList = Directory.GetFiles(Directory.GetCurrentDirectory()+@"/Ressources/Movies/", "*.mvl");
+            string[] filesList = Directory.GetFiles(Directory.GetCurrentDirectory() + @"/Ressources/Movies/", "*.mvl");
             int i = 0;
-            foreach(string file in filesList)
+            foreach (string file in filesList)
             {
                 try
                 {
@@ -48,15 +49,8 @@ namespace Projet
                     {
                         FileStream fileStream = new FileStream(file, FileMode.Open);
                         Movie movie = (Movie)binaryFormatter.Deserialize(fileStream);
-                        movieList.Add(movie);
+                        gridScan(movie, i);
                         fileStream.Close();
-                        imageList1.Images.Add(movie.getImage());
-                        listView1.View = View.LargeIcon;
-                        imageList1.ImageSize = new Size(128, 128);
-                        listView1.LargeImageList = imageList1;
-                        ListViewItem listViewItem = new ListViewItem(movie.getTitle()+ " — " + movie.getAuthor()+" ("+movie.getYear()+")");
-                        listViewItem.ImageIndex = i;
-                        listView1.Items.Add(listViewItem);
                         ++i;
                     }
                 }
@@ -82,10 +76,10 @@ namespace Projet
                 AddMovie addMovie = new AddMovie(this, movie);
                 addMovie.Show();
             }
-            catch(ArgumentOutOfRangeException iobe)
+            catch (ArgumentOutOfRangeException iobe)
             {
                 Console.WriteLine("Error: {0}", iobe.Message);
-            } 
+            }
         }
 
         private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
@@ -152,10 +146,10 @@ namespace Projet
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure to delete these movies ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(dr.Equals(DialogResult.Yes))
+            if (dr.Equals(DialogResult.Yes))
             {
                 // Je parcoure les éléments sélectionnés et les supprime.
-                for(int i = 0; i < listView1.SelectedItems.Count; ++i)
+                for (int i = 0; i < listView1.SelectedItems.Count; ++i)
                 {
                     // Je fais correspondre un objet ListItem avec un Movie grâce à la List<Movie>.
                     Movie movie = movieList[listView1.Items.IndexOf(listView1.SelectedItems[i])];
@@ -165,6 +159,60 @@ namespace Projet
                 // Je mets à jour la liste de films.
                 initLibrary();
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string text = textBox1.Text;
+            if (!(String.IsNullOrEmpty(text) || String.IsNullOrWhiteSpace(text)))
+            {
+                initLibrary();
+                searchMovieList.Clear();
+                foreach(Movie movie in movieList)
+                {
+                    searchMovieList.Add(movie);
+                }
+                listView1.Clear();
+                imageList1.Images.Clear();
+                movieList.Clear();
+                int i = 0;
+                foreach (Movie movie in searchMovieList)
+                {
+                    try
+                    {
+                        // TODO Fixer le fait que pendant la recherche, le programme passe 2 fois dans la fonction
+                        for (int j = 0; j <= movie.getTitle().Length - text.Length; ++j)
+                        {
+                            if (text.Equals(movie.getTitle().Substring(j, text.Length)))
+                            {
+                                gridScan(movie, i);
+                                ++i;
+                            }
+                        }
+                    }
+                    catch(ArgumentOutOfRangeException aoore)
+                    {
+                        //pass
+                    }
+                    
+                }
+            }
+            else
+            {
+                initLibrary();
+            }
+        }
+
+        private void gridScan(Movie movie, int i)
+        {
+            movieList.Add(movie);
+            imageList1.Images.Add(movie.getImage());
+            listView1.View = View.LargeIcon;
+            imageList1.ImageSize = new Size(128, 128);
+            listView1.LargeImageList = imageList1;
+            ListViewItem listViewItem = new ListViewItem(movie.getTitle() + " — " + movie.getAuthor() + " (" + movie.getYear() + ")");
+            listViewItem.ImageIndex = i;
+            listView1.Items.Add(listViewItem);
         }
     }
 }

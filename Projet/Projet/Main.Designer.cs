@@ -41,6 +41,7 @@
             this.themesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.defaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lightBlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.redtubeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pornHubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yellowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.youPornToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +50,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.listView1 = new System.Windows.Forms.ListView();
-            this.redtubeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +78,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(348, 20);
             this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // comboBox1
             // 
@@ -132,7 +133,7 @@
             // fuckItToolStripMenuItem
             // 
             this.fuckItToolStripMenuItem.Name = "fuckItToolStripMenuItem";
-            this.fuckItToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.fuckItToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.fuckItToolStripMenuItem.Text = "Fuck it ...";
             // 
             // preferencesToolStripMenuItem
@@ -153,41 +154,48 @@
             this.yellowToolStripMenuItem,
             this.youPornToolStripMenuItem});
             this.themesToolStripMenuItem.Name = "themesToolStripMenuItem";
-            this.themesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.themesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.themesToolStripMenuItem.Text = "&Themes";
             // 
             // defaultToolStripMenuItem
             // 
             this.defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
-            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.defaultToolStripMenuItem.Text = "&Default";
             this.defaultToolStripMenuItem.Click += new System.EventHandler(this.defaultToolStripMenuItem_Click);
             // 
             // lightBlueToolStripMenuItem
             // 
             this.lightBlueToolStripMenuItem.Name = "lightBlueToolStripMenuItem";
-            this.lightBlueToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lightBlueToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.lightBlueToolStripMenuItem.Text = "&Light Blue";
             this.lightBlueToolStripMenuItem.Click += new System.EventHandler(this.lightBlueToolStripMenuItem_Click);
+            // 
+            // redtubeToolStripMenuItem
+            // 
+            this.redtubeToolStripMenuItem.Name = "redtubeToolStripMenuItem";
+            this.redtubeToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.redtubeToolStripMenuItem.Text = "&Redtube";
+            this.redtubeToolStripMenuItem.Click += new System.EventHandler(this.redtubeToolStripMenuItem_Click);
             // 
             // pornHubToolStripMenuItem
             // 
             this.pornHubToolStripMenuItem.Name = "pornHubToolStripMenuItem";
-            this.pornHubToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pornHubToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.pornHubToolStripMenuItem.Text = "&PornHub";
             this.pornHubToolStripMenuItem.Click += new System.EventHandler(this.pornHubToolStripMenuItem_Click);
             // 
             // yellowToolStripMenuItem
             // 
             this.yellowToolStripMenuItem.Name = "yellowToolStripMenuItem";
-            this.yellowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.yellowToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.yellowToolStripMenuItem.Text = "&Yellow Light";
             this.yellowToolStripMenuItem.Click += new System.EventHandler(this.yellowToolStripMenuItem_Click);
             // 
             // youPornToolStripMenuItem
             // 
             this.youPornToolStripMenuItem.Name = "youPornToolStripMenuItem";
-            this.youPornToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.youPornToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.youPornToolStripMenuItem.Text = "Y&ouPorn";
             this.youPornToolStripMenuItem.Click += new System.EventHandler(this.youPornToolStripMenuItem_Click);
             // 
@@ -230,13 +238,6 @@
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.ItemActivate += new System.EventHandler(this.listView1_ItemActivate);
-            // 
-            // redtubeToolStripMenuItem
-            // 
-            this.redtubeToolStripMenuItem.Name = "redtubeToolStripMenuItem";
-            this.redtubeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.redtubeToolStripMenuItem.Text = "&Redtube";
-            this.redtubeToolStripMenuItem.Click += new System.EventHandler(this.redtubeToolStripMenuItem_Click);
             // 
             // Main
             // 

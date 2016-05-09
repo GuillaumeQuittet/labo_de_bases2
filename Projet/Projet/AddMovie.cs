@@ -204,13 +204,13 @@ namespace Projet
 
         private bool canSave()
         {
-            if (!String.IsNullOrEmpty(textBox1.Text))
+            if (!(String.IsNullOrEmpty(textBox1.Text) || String.IsNullOrWhiteSpace(textBox1.Text)))
             {
-                if (!String.IsNullOrEmpty(textBox2.Text))
+                if (!(String.IsNullOrEmpty(textBox2.Text) || String.IsNullOrWhiteSpace(textBox2.Text)))
                 {
-                    if (!String.IsNullOrEmpty(textBox3.Text))
+                    if (!(String.IsNullOrEmpty(textBox3.Text) || String.IsNullOrWhiteSpace(textBox3.Text)))
                     {
-                        if (!String.IsNullOrEmpty(textBox4.Text))
+                        if (!(String.IsNullOrEmpty(textBox4.Text) || String.IsNullOrWhiteSpace(textBox4.Text)))
                         {
                             if (pictureBox1.Image != null)
                             {
