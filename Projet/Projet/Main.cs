@@ -19,12 +19,23 @@ namespace Projet
 
         List<Movie> movieList = new List<Movie>();
         List<Movie> searchMovieList = new List<Movie>();
+        int searchFor = 0;
 
         public Main()
         {
             InitializeComponent();
             MinimumSize = new Size(500, 300);
+            initializeCombobox();
             initLibrary();
+        }
+
+        private void initializeCombobox()
+        {
+            comboBox1.Items.Add("Title");
+            comboBox1.Items.Add("Author");
+            comboBox1.Items.Add("Category");
+            comboBox1.Items.Add("Year");
+            comboBox1.SelectedItem = "Title";
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,6 +74,20 @@ namespace Projet
                     Console.WriteLine("IOException: {0}", ioe.Message);
                 }
             }
+            switch(movieList.Count)
+            {
+                case 0:
+                    toolStripStatusLabel1.Text = "You haven't any movie.";
+                    break;
+                case 1:
+                    toolStripStatusLabel1.Text = "You have " + movieList.Count + " movie.";
+                    break;
+                default:
+                    toolStripStatusLabel1.Text = "You have " + movieList.Count + " movies.";
+                    break;
+            }
+            statusStrip1.Invalidate();
+            statusStrip1.Refresh();
         }
 
         // La partie thèmes.
@@ -165,7 +190,7 @@ namespace Projet
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string text = textBox1.Text;
+            string text = textBox1.Text.ToLower();
             if (!(String.IsNullOrEmpty(text) || String.IsNullOrWhiteSpace(text)))
             {
                 initLibrary();
@@ -182,16 +207,67 @@ namespace Projet
                 {
                     try
                     {
-                        for (int j = 0; j <= movie.getTitle().Length - text.Length; ++j)
+                        String text2;
+                        switch (searchFor)
                         {
-                            if (text.Equals(movie.getTitle().Substring(j, text.Length)))
-                            {
-                                gridScan(movie, i);
-                                ++i;
-                                // Une fois le film trouvé, on quitte la boucle.
+                            case 0:
+                                text2 = movie.getTitle().ToLower();
+                                for (int j = 0; j <= text2.Length - text.Length; ++j)
+                                {
+                                    if (text.Equals(text2.Substring(j, text.Length)))
+                                    {
+                                        gridScan(movie, i);
+                                        ++i;
+                                        // Une fois le film trouvé, on quitte la boucle.
+                                        break;
+                                    }
+                                }
                                 break;
-                            }
+                            case 1:
+                                text2 = movie.getAuthor().ToLower();
+                                for (int j = 0; j <= text2.Length - text.Length; ++j)
+                                {
+                                    if (text.Equals(text2.Substring(j, text.Length)))
+                                    {
+                                        gridScan(movie, i);
+                                        ++i;
+                                        // Une fois le film trouvé, on quitte la boucle.
+                                        break;
+                                    }
+                                }
+                                break;
+                            case 2:
+                                text2 = movie.getCategory().ToLower();
+                                for (int j = 0; j <= text2.Length - text.Length; ++j)
+                                {
+                                    if (text.Equals(text2.Substring(j, text.Length)))
+                                    {
+                                        gridScan(movie, i);
+                                        ++i;
+                                        // Une fois le film trouvé, on quitte la boucle.
+                                        break;
+                                    }
+                                }
+                                break;
+                            case 3:
+                                int yearMovie = movie.getYear();
+                                int searchYear;
+                                if(int.TryParse(text, out searchYear))
+                                {
+                                    if (searchYear == yearMovie)
+                                    {
+                                        gridScan(movie, i);
+                                        ++i;
+                                        // Une fois le film trouvé, on quitte la boucle.
+                                        break;
+                                    }
+                                }
+                                break;
+                            default:
+                                MessageBox.Show("Il y a un bug qui a été caché par le développeur :) Saurez-vous le retrouver ? Vous avez 24 heures !", "Défi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                break;
                         }
+
                     }
                     catch(ArgumentOutOfRangeException aoore)
                     {
@@ -215,6 +291,50 @@ namespace Projet
             ListViewItem listViewItem = new ListViewItem(movie.getTitle() + " — " + movie.getAuthor() + " (" + movie.getYear() + ")");
             listViewItem.ImageIndex = i;
             listView1.Items.Add(listViewItem);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            searchFor = comboBox1.SelectedIndex;
+            textBox1.Clear();
+            initLibrary();
+        }
+
+        private void fuckItToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to quit this awesome project ? :(", "Confirmation : Lol", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(dr.Equals(DialogResult.Yes))
+            {
+                Close();
+            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("I used the C# language only. I've made a big part of this project in one hour on my W.C. I hate C# because it's a Java like but with less features.", "About: OMG", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void resetLibraryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Do you really want to reset your movies library ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr.Equals(DialogResult.Yes))
+            {
+                foreach (Movie movie in movieList)
+                {
+                    try
+                    {
+                        File.Delete(@"Ressources/Movies/" + movie.getTitle() + movie.getDay() + movie.getMonth() + movie.getYear() + movie.getAuthor() + movie.getCategory() + ".mvl");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("{0}", ex.Message);
+                    }
+                }
+                movieList.Clear();
+                searchMovieList.Clear();
+                imageList1.Images.Clear();
+                listView1.Clear();
+            }
         }
     }
 }
