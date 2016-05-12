@@ -24,6 +24,7 @@ namespace Projet
         public AddMovie(Main main)
         {
             InitializeComponent();
+            MinimumSize = new Size(515, 375);
             InitializeCombobox();
             this.main = main;
             deleteButton.Enabled = false;

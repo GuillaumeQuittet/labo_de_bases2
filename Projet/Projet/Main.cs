@@ -17,14 +17,24 @@ namespace Projet
     public partial class Main : Form
     {
 
-        List<Movie> movieList = new List<Movie>();
-        List<Movie> searchMovieList = new List<Movie>();
-        int searchFor = 0;
+        private List<Movie> movieList = new List<Movie>();
+        private List<Movie> searchMovieList = new List<Movie>();
+        private int searchFor = 0;
+        private string libraryName = @"Ressources/Movies/";
 
         public Main()
         {
             InitializeComponent();
             MinimumSize = new Size(500, 300);
+            initializeCombobox();
+            initLibrary();
+        }
+
+        public Main(string libraryName)
+        {
+            InitializeComponent();
+            MinimumSize = new Size(500, 300);
+            this.libraryName = libraryName;
             initializeCombobox();
             initLibrary();
         }
@@ -50,7 +60,7 @@ namespace Projet
             listView1.Clear();
             movieList.Clear();
             BinaryFormatter binaryFormatter = new BinaryFormatter();
-            string[] filesList = Directory.GetFiles(Directory.GetCurrentDirectory() + @"/Ressources/Movies/", "*.mvl");
+            string[] filesList = Directory.GetFiles(Directory.GetCurrentDirectory() + @"/" + libraryName, "*.mvl");
             int i = 0;
             foreach (string file in filesList)
             {
@@ -103,7 +113,9 @@ namespace Projet
             }
             catch (ArgumentOutOfRangeException iobe)
             {
-                Console.WriteLine("Error: {0}", iobe.Message);
+                movie = movieList[0];
+                AddMovie addMovie = new AddMovie(this, movie);
+                addMovie.Show();
             }
         }
 
@@ -179,7 +191,7 @@ namespace Projet
                     // Je fais correspondre un objet ListItem avec un Movie grâce à la List<Movie>.
                     Movie movie = movieList[listView1.Items.IndexOf(listView1.SelectedItems[i])];
                     // Je supprime le fichier correspondant au Movie sélectionné.
-                    File.Delete(@"Ressources/Movies/" + movie.getTitle() + movie.getDay() + movie.getMonth() + movie.getYear() + movie.getAuthor() + movie.getCategory() + ".mvl");
+                    File.Delete(libraryName + movie.getTitle() + movie.getDay() + movie.getMonth() + movie.getYear() + movie.getAuthor() + movie.getCategory() + ".mvl");
                 }
                 // On remet à zéro le textBox1
                 textBox1.Text = "";
@@ -273,6 +285,18 @@ namespace Projet
                     {
                         Console.WriteLine("Error: {0}", aoore.Message);
                     }
+                    switch(i)
+                    {
+                        case 0:
+                            toolStripStatusLabel1.Text = "No result.";
+                            break;
+                        case 1:
+                            toolStripStatusLabel1.Text = "There's one result.";
+                            break;
+                        default:
+                            toolStripStatusLabel1.Text = "There are "+ i +" results.";
+                            break;
+                    }
                 }
             }
             else
@@ -286,7 +310,7 @@ namespace Projet
             movieList.Add(movie);
             imageList1.Images.Add(movie.getImage());
             listView1.View = View.LargeIcon;
-            imageList1.ImageSize = new Size(128, 128);
+            imageList1.ImageSize = new Size(128, 163);
             listView1.LargeImageList = imageList1;
             ListViewItem listViewItem = new ListViewItem(movie.getTitle() + " — " + movie.getAuthor() + " (" + movie.getYear() + ")");
             listViewItem.ImageIndex = i;
@@ -323,7 +347,7 @@ namespace Projet
                 {
                     try
                     {
-                        File.Delete(@"Ressources/Movies/" + movie.getTitle() + movie.getDay() + movie.getMonth() + movie.getYear() + movie.getAuthor() + movie.getCategory() + ".mvl");
+                        File.Delete(libraryName + movie.getTitle() + movie.getDay() + movie.getMonth() + movie.getYear() + movie.getAuthor() + movie.getCategory() + ".mvl");
                     }
                     catch (Exception ex)
                     {
