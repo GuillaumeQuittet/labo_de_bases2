@@ -78,9 +78,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.oldTimer = new System.Windows.Forms.Timer(this.components);
-            this.label3 = new System.Windows.Forms.Label();
             this.connexionBox.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -741,14 +741,6 @@
             this.label2.Text = "Vitesse : Aucune";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // timer
-            // 
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // oldTimer
-            // 
-            this.oldTimer.Tick += new System.EventHandler(this.oldTimer_Tick);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -759,6 +751,14 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Période : Aucune";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // oldTimer
+            // 
+            this.oldTimer.Tick += new System.EventHandler(this.oldTimer_Tick);
             // 
             // Form1
             // 

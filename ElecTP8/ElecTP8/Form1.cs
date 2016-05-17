@@ -109,6 +109,10 @@ namespace ElecTP8
             if(device >= 0 && device < 4)
             {
                 statusLabel.Text = "Carte " + device.ToString() + " connectée.";
+                connexionButton.Enabled = false;
+                add0Checkbox.Enabled = false;
+                add1CheckBox.Enabled = false;
+                connexionButton.Text = "Connecté";
                 timer.Enabled = true;
             }
             else
@@ -198,7 +202,6 @@ namespace ElecTP8
                         default:
                             break;
                     }
-                    buttonState = 1;
                 }
                 onThreading = true;
                 output1Checkbox.Enabled = false;
@@ -210,6 +213,8 @@ namespace ElecTP8
                 output7Checkbox.Enabled = false;
                 output8Checkbox.Enabled = false;
             }
+            if (input1CheckBox.Checked)
+                buttonState = 1;
             else
                 buttonState = 0;
             pictureBox11.Refresh();
