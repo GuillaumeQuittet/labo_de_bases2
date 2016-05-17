@@ -134,6 +134,8 @@ namespace ElecTP8
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             timer.Enabled = false;
+            oldTimer.Enabled = false;
+            allOff();
             CloseDevice();
         }
 
